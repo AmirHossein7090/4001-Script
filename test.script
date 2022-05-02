@@ -1,0 +1,13 @@
+echo hello this is test script
+calc - # ^ 5 2 11 3
+prims 7
+open output.txt
+echo output file begins
+calc + 2 3
+close
+echo file closed
+do 3
+: calc + 2 3
+: echo hello python!
+: 
+pause
