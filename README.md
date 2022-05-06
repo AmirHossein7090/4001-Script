@@ -50,8 +50,47 @@ The text that comes after **"..."** is the user input before the enter key. The 
 This function is used for mathematical calculations and must be able to calculate a prefix mathematical expression.
 Mathematical operations include four basic operations, namely +, -, \*, / (addition, subtraction, multiplication and division) as well as the operator ^ for power and # for remainder (modulus) and \ for correct division. (7 operators in total)
 
-**Note** that the input must be controlled. Wrong operators or entering letters instead of numbers should be alerted to the user. Also note that numbers can have both positive and negative signs.
+**Note:** that the input must be controlled. Wrong operators or entering letters instead of numbers should be alerted to the user. Also note that numbers can have both positive and negative signs.
 ```
 > calc <variable name> <expression>
 ```
-In this case, the first parameter is the name of the variable in which the result must be stored, and the next parameters are the sections of the expression. After calculating the expression, this function stores the result in the variable and nothing is displayed.
+In this case, the first parameter is the name of the variable in which the result must be stored, and the next parameters are the sections of the expression. After calculating the expression, this function stores the result in the variable and nothing is displayed. For example:
+```
+> calc test + 1 2 
+> echo %test% 
+3
+```
+Variables can also be used in mathematical expressions. The following is an example above:
+```
+> calc test * %test% 2 
+> echo %test% 
+6
+```
+This function can also be used to store a numeric value in a variable. In the following example, the value of the test variable is equal to 5:
+```
+> calc test 5
+```
+All parameters are functions of mathematical expression sections and after calculating the resulting expression is displayed to the user:
+```
+> calc + - * 2 3 4 5 
+7
+```
+**Note:** Supports positive and negative decimal numbers (input controlled)
+
+## `get` function
+#### `syntax: get <variable name> <prompt>`
+This function displays a message to the user and takes a numeric value (which can be a decimal or integer like the calc command) from the user and stores it in the variable. Note that this function must also have input control. Numbers can also be positive or negative.
+
+## `prims` function
+#### `syntax: prims <n>`
+This function is to display all prime numbers from 0 to n itself and each number is separated by a **","** sign:
+```
+> prims 7 
+2, 3, 5, 7
+```
+This function can also take a variable as a parameter:
+```
+> calc b 5 
+> prims %b% 
+2, 3, 5
+```
