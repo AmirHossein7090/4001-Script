@@ -31,22 +31,30 @@ def is_prime(number: int) -> bool:
 
 
 def run_script(path: str):
-    global run_from_file
-    run_from_file = True
     with open(path, 'r') as file:
         scripts = file.read().split('\n')
-        if not scripts[-1]:  # Checks for blank line
+        if not scripts[-1]:  # Checks for the blank line
             scripts = scripts[:-1]
+    executed_commands = []
+    n = int()
     for command in scripts:
-        command = get_variable_value(command).split(':')
-        print(command)
-        if 'do' in command or ':' in command:
-            command = ' '.join(command[1:])  # command[1:] === delete the ':' char
+        command = get_variable_value(command).split(' ')
+        if command[0] == 'do':
+            n = int(command[1])
             continue
-        # result = command_handler(command)
-        # if result:
-        #     print(result)
-    run_from_file = False
+        if command[0] == ':' and len(command) <= 2:  # It means is the last of the "do" command
+            for _ in range(n):
+                for data in executed_commands:
+                    print(data)
+            continue
+        if command[0] == ':':
+            result = command_handler(command[1:])  # First item is the ":" sign
+            if result:
+                executed_commands.append(result)
+            continue
+        result = command_handler(command)
+        if result:
+            print(result)
 
 
 def read_file(path: str):
@@ -67,18 +75,16 @@ def file_writer(file_command: list):
 
 
 def do(params: list):
-    global run_from_file
     n = int(params[0])
     command = params[1:]
     all_commands = []
     response = []
     if not command:
-        if not run_from_file:
-            while True:
-                command = input(': ')
-                all_commands.append(command)
-                if not command:
-                    break
+        while True:
+            command = input(': ')
+            all_commands.append(command)
+            if not command:
+                break
         for _ in range(n):
             for c in all_commands[:-1]:
                 result = command_handler(c.split())
@@ -162,6 +168,8 @@ def calc(params: list[str]):
     if variable:
         variables[variable] = result
     else:
+        if result == 0:
+            result = f'{result}'
         return result
 
 
@@ -223,8 +231,6 @@ variables = dict()
 file_opened = False
 file_object = None
 file_path = str()
-# Run scripts handler
-run_from_file = False
 while True:
     m_result = main()
     if m_result:
