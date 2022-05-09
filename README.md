@@ -244,3 +244,7 @@ file "output.txt" closed
 file closed 
 Please press ENTER to continue...
 ```
+This function can also read and execute **do commands**.
+<br />
+<br />
+*Thank you for your look*
