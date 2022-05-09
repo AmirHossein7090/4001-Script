@@ -244,7 +244,7 @@ file "output.txt" closed
 file closed 
 Please press ENTER to continue...
 ```
-This function can also read and execute **do commands**.
+This function can also read and execute **do commands**. (Plz see the "test.script" file in this repo)
 <br />
 <br />
-*Thank you for your look*
+*Thank you for your look.*
