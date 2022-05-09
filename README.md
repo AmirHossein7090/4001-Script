@@ -158,7 +158,7 @@ Example 2:
 ## `open` & `close` function
 #### `open syntax: open <file>`
 #### `close syntax: close`
-The open command causes your program to store all subsequent outputs in a file specified by the user until the user enters the close command; That is, by executing the close command, other outputs are not saved in the file. Note that the file name can also contain a space letter. After executing the open and close commands, the following messages should be displayed, respectively. In both of these messages, <file> is the name of the file specified by the user.
+The open command causes your program to store all subsequent outputs in a file specified by the user until the user enters the close command; That is, by executing the close command, other outputs are not saved in the file. Note that the file name can also contain a space letter. After executing the open and close commands, the following messages should be displayed, respectively. In both of these messages, <file> is the name of the file specified by the user.<br />
 ```
 File "<file>" opened 
 File "<file>" closed
