@@ -185,3 +185,62 @@ hello
 15 
 end
 ```
+Note that blank lines are not written in the file.<br />
+Also, all or part of the file name can be variable. Example:
+```
+> calc i 0 
+> do 5 
+: calc i + %i% 1 
+: open test%i%.txt 
+: echo hi file %i% 
+: close 
+: 
+hi file 1 
+hi file 2 
+hi file 3 
+hi file 4 
+hi file 5
+```
+As a result of executing the above code, five files named *test1.txt* to *test5.txt* are created.
+
+## `read` function
+#### `syntax: read <file>`
+This function is used to display a file. Here, too, filenames can also contain spaces. for example:
+```
+> read test file.txt 
+hello 
+2, 3, 5, 7 
+15 
+end
+```
+In this function, part of the file name can also be variable.
+
+## `run` function
+#### `syntax: run <file>`
+This command is to open a script in **4001 language**. :)<br />
+Your program must be able to execute the file received in the parameter. The commands in this file are written line by line. As with previous functions, part of the script file name can be variable.<br />
+Example of a script and its execution (without variables):
+```
+echo hello this is test script 
+calc - # ^ 5 2 11 3 
+prims 7 
+open output.txt 
+echo output file begins 
+calc + 2 3 
+close 
+echo file closed 
+pause
+```
+Now, we run it:
+```
+> run test.script 
+hello this is test script 
+0 
+2 3 5 7 
+File "output.txt" opened 
+output file begins 
+5 
+file "output.txt" closed 
+file closed 
+Please press ENTER to continue...
+```
